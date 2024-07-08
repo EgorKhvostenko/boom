@@ -31,6 +31,12 @@ class shop:
         for item in self.items:
             lable4=tk.Frame(self.lable)
             lable4.pack(fill='x',pady=5)
+            lable5=tk.Label(lable4,text=item['name'], font=('Arial',14))
+            lable5.pack(side='left',padx=10)
+            lable6=tk.Label(lable4,text=f"{item['price']} грн.", font=('Arial',14))
+            lable6.pack(side='left',padx=10)
+
+
 
 
 
