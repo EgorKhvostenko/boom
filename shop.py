@@ -35,7 +35,7 @@ class shop:
             lable5.pack(side='left',padx=10)
             lable6=tk.Label(lable4,text=f"{item['price']} грн.", font=('Arial',14))
             lable6.pack(side='left',padx=10)
-            lable7=tk.Button(lable4,text='добавить в корзину ',command=lambda i=item:self.delete(i))
+            lable7=tk.Button(lable4,text='добавить в корзину ',command=lambda i=item:self.add(i))
             lable7.pack(side='right')
     def update_cap(self):
         for widget in self.lable1.winfo_children():
@@ -47,8 +47,28 @@ class shop:
             lable5.pack(side='left',padx=10)
             lable6=tk.Label(lable4,text=f"{item['price']}грн", font=('Ariel',14))
             lable6.pack(side='left',padx=10)
-            lable17=tk.Button(lable4,text='убрать',command=lambda i=item:self.delete(i))
+            lable17=tk.Button(lable4,text='убрать',command=lambda i=item:self.delet(i))
+            lable17.pack(side='right')
         self.lable2.config(text=f"total price:{self.total}грн")
+    def add(self,item):
+        self.cart.append(item)
+        self.total +=item['price']
+        self.update_cap()
+    def delet(self,item):
+        self.cart.remove(item)
+        self.total -=item['price']
+        self.update_cap()
+    def checkout(self):
+        if self.cart:
+            messagebox.showinfo('оформление заказа',f'ваш заказа на суму {self.total}грн.оформлен')
+            self.cart=[]
+            self.total=0
+            self.update_cap()
+        else:
+            messagebox.showwarning('ошыбка','ваша корзина пустая')
+
+
+
 
 
 
