@@ -35,8 +35,20 @@ class shop:
             lable5.pack(side='left',padx=10)
             lable6=tk.Label(lable4,text=f"{item['price']} грн.", font=('Arial',14))
             lable6.pack(side='left',padx=10)
-
-
+            lable7=tk.Button(lable4,text='добавить в корзину ',command=lambda i=item:self.delete(i))
+            lable7.pack(side='right')
+    def update_cap(self):
+        for widget in self.lable1.winfo_children():
+            widget.destroy()
+        for item in self.cart:
+            lable4=tk.Frame(self.lable1)
+            lable4.pack(fill='x',pady=5)
+            lable5=tk.Label(lable4,text=item['name'],font=('Ariel',14))
+            lable5.pack(side='left',padx=10)
+            lable6=tk.Label(lable4,text=f"{item['price']}грн", font=('Ariel',14))
+            lable6.pack(side='left',padx=10)
+            lable17=tk.Button(lable4,text='убрать',command=lambda i=item:self.delete(i))
+        self.lable2.config(text=f"total price:{self.total}грн")
 
 
 
