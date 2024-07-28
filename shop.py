@@ -75,6 +75,7 @@ class shop:
 
 
 
+
 if __name__ =='__main__':
     q=tk.Tk()
     app=shop(q)
